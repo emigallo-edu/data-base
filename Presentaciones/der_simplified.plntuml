@@ -1,0 +1,30 @@
+@startuml
+
+entity TOURNAMENT
+entity CLUB
+entity PLAYER
+entity MATCH
+entity STADIUM
+entity STANDING
+entity TOURNAMENT_CLUB
+entity PLAYER_MATCH
+entity STANDING_ENTRY
+
+TOURNAMENT "1" -- "0..*" MATCH
+TOURNAMENT "1" -- "0..*" TOURNAMENT_CLUB
+TOURNAMENT "1" -- "1" STANDING
+
+CLUB "1" -- "0..*" PLAYER
+CLUB "1" -- "0..*" TOURNAMENT_CLUB
+CLUB "1" -- "0..*" STANDING_ENTRY
+
+MATCH "1" -- "1" STADIUM
+MATCH "1" -- "0..*" PLAYER_MATCH
+
+MATCH "1" -- "2" CLUB : local
+
+PLAYER "1" -- "0..*" PLAYER_MATCH
+
+STANDING "1" -- "0..*" STANDING_ENTRY
+
+@enduml
